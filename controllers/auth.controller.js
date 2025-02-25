@@ -1,6 +1,8 @@
 const { authService } = require("../services");
 
-const signupUser = async (request, response) => {
+class AuthController {
+
+async signupUser (request, response) {
   try {
     const { name, email, password, profilePic } = request.body;
     if (!name || !email || !password) {
@@ -13,7 +15,7 @@ const signupUser = async (request, response) => {
   }
 };
 
-const verifyAccount = async (request, response) => {
+async verifyAccount (request, response) {
   try {
     const { token } = request.query;
     if (!token) {
@@ -26,7 +28,7 @@ const verifyAccount = async (request, response) => {
   }
 };
 
-const loginUser = async (request, response) => {
+async loginUser (request, response) {
   try {
     const { email, password } = request.body;
     if (!email ||!password) {
@@ -39,7 +41,7 @@ const loginUser = async (request, response) => {
   }
 };
 
-const newAccessToken = async (request, response) => {
+async newAccessToken (request, response) {
   try {
     const { refreshToken } = request.body;
     if (!refreshToken) {
@@ -51,10 +53,6 @@ const newAccessToken = async (request, response) => {
     response.status(400).json({ message: error.message });
   }
 };
+}
 
-module.exports = {
-  signupUser,
-  verifyAccount,
-  loginUser,
-  newAccessToken,
-};
+module.exports = new AuthController()
