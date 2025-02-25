@@ -7,8 +7,8 @@ const transport = nodemailer.createTransport(config.email.SMTP);
 
 transport
   .verify()
-  .then(() => console.log("Connected to Email Server"))
-  .catch((error) => console.error("Error connecting to email server", error));
+  .then(() => logger.info("Connected to Email Server"))
+  .catch((error) => logger.error("Error connecting to email server", error));
 
 const sendEmail = async (to, subject, html) => {
   try {

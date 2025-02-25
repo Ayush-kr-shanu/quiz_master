@@ -1,10 +1,10 @@
 const dotenv = require("dotenv");
 const path = require("node:path");
 
-// Load environment variables from.env file
 require("dotenv").config()
 
 module.exports = {
+  NODE_ENV: process.env.NODE_ENV,
   PORT: process.env.PORT,
   MONGODB_URI: process.env.DB_URL,
   email: {
@@ -22,4 +22,5 @@ module.exports = {
   JWT_EXPIRES_MINUTES: process.env.JWT_EXPIRES_MINUTES,
   JWT_EXPIRES_DAYS: process.env.JWT_EXPIRES_DAYS,
   BASE_URL: process.env.BASE_URL,
+  ALLOW_URLS: process.env.ALLOW_URLS,
 };
